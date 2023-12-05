@@ -1,0 +1,70 @@
+{
+    "name": "zk8插件",
+    "description" : "高亮关键词，屏蔽水贴，屏蔽logo、签名，修改icon、标题等，支持赚吧和新赚吧，updator:Selier",
+    "version": "2.5",
+    "manifest_version":2,
+	"icons":
+	{
+		"48": "img/icon.png"
+	},
+	"background":
+	{
+		"page": "background.html"
+	},
+	"browser_action": 
+	{
+		"default_icon": "img/icon.png",
+		"default_title": "zk8插件",
+		"default_popup": "popup.html"
+	},
+    "content_scripts": [
+		{
+		  "matches": [
+			"http://www.zuanke8.com/*",
+			"http://www.zuanke8.cn/*",
+			"http://zuanke8.cn/*",
+			"http://zuanke8.com/*"
+		  ],
+		  "js": [
+			"./js/jquery.min.js",
+			"./js/jquery.mark.min.js",
+			"./js/main.min.js"
+		  ],
+		  "css": [
+			  "./css/main.css"
+		  ],
+		  "all_frames": false,
+		  "run_at": "document_start"
+		},{
+		  "matches": [
+			"https://*.xianbao.net/*",
+			"http://*.xianbao.net/*"
+		  ],
+		  "js": [
+			"./js/jquery.min.js",
+			"./js/jquery.mark.min.js",
+			"./js/main_xzb.min.js"
+		  ],
+		  "css": [
+			  "./css/main.css"
+		  ],
+		  "all_frames": false,
+		  "run_at": "document_start"
+		}
+	], 
+	"permissions":	// 权限申请
+	[
+		"contextMenus", // 右键菜单
+		"tabs", // 标签
+		"notifications", // 通知
+		"webRequest", // web请求
+		"webRequestBlocking",
+		"storage", // 插件本地存储
+		"http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+		"https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+	],
+	// 插件主页，
+	"homepage_url": "https://xbcc.vip/zbcj/index.html",
+	// Chrome40以前的插件配置页写法
+	"options_page": "options.html"
+}
